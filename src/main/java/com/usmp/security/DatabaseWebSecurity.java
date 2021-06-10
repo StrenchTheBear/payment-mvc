@@ -31,7 +31,7 @@ public class DatabaseWebSecurity extends WebSecurityConfigurerAdapter {
             .antMatchers("/",
                 "/client/register").permitAll()
             .anyRequest().authenticated()
-            .and().formLogin().permitAll();
+            .and().formLogin().loginPage("/login").permitAll();
     }
 
     @Autowired

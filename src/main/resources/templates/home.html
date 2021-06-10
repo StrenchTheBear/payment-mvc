@@ -9,10 +9,12 @@
 
     <span th:if="${messageSuccess != null}" th:text="${messageSuccess}"></span>
 
-    <a th:href="@{/index}">Ingresar</a>
+    <span th:if="${session.customer != null}" th:text="'Bienvenido ' + ${session.customer.name}"></span>&nbsp;
 
-    <a th:href="@{/client/register}">Registrar cliente</a>
+    <a th:href="@{/index}">Iniciar sesi&oacute;n</a>&nbsp;
 
-    <a th:href="@{/logout}">Cerrar sesi&oacute;n</a>
+    <a th:href="@{/client/register}">Registrarse</a>&nbsp;
+
+    <a sec:authorize="isAuthenticated()" th:href="@{/logout}">Cerrar sesi&oacute;n</a>
 </body>
 </html>
