@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Payment business</title>
+</head>
+<body>
+    <h1>Usmp Programaci&oacute;n 2</h1>
+
+    <span th:if="${messageSuccess != null}" th:text="${messageSuccess}"></span>
+
+    <a th:href="@{/index}">Ingresar</a>
+
+    <a th:href="@{/client/register}">Registrar cliente</a>
+
+    <a th:href="@{/logout}">Cerrar sesi&oacute;n</a>
+</body>
+</html>
