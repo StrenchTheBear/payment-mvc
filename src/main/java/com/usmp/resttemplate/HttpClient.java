@@ -1,6 +1,7 @@
 package com.usmp.resttemplate;
 
 import com.usmp.dto.Customer;
+import com.usmp.dto.RegisterCard;
 import org.springframework.http.*;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClientException;
@@ -17,6 +18,7 @@ public class HttpClient {
     private static final String CREATE_CUSTOMER_ENDPOINT = "https://usmppayment-api.herokuapp.com/payment-business/customers/create";
     private static final String GET_CUSTOMER_CARDS_ENDPOINT = "https://usmppayment-api.herokuapp.com/payment-business/customers/cards/";
     private static final String DELETE_CUSTOMER_CARD_ENDPOINT = "https://usmppayment-api.herokuapp.com/payment-business/cards/";
+    private static final String INSERT_CUSTOMER_CARD = "https://usmppayment-api.herokuapp.com/payment-business/cards/register";
 
     public HttpClient() {
         this.restTemplate = new RestTemplate();
@@ -53,6 +55,17 @@ public class HttpClient {
         HttpEntity<Void> entity = new HttpEntity<>(createHttpHeaders());
         try {
             response = this.restTemplate.exchange(uri, HttpMethod.DELETE, entity, Map.class);
+        } catch (RestClientException ex) {
+            System.out.println("Ocurrió un problema al consumir el servicio: " + ex.getMostSpecificCause().getMessage());
+        }
+        return response;
+    }
+
+    public Map<String, Object> executeInsertCustomerCard(RegisterCard registerCard) {
+        Map<String, Object> response = null;
+        HttpEntity<RegisterCard> entity = new HttpEntity<>(registerCard, createHttpHeaders());
+        try {
+            response = this.restTemplate.postForObject(INSERT_CUSTOMER_CARD, entity, Map.class);
         } catch (RestClientException ex) {
             System.out.println("Ocurrió un problema al consumir el servicio: " + ex.getMostSpecificCause().getMessage());
         }
