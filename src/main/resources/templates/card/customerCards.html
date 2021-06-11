@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Payment Business - M&eacute;todos de pago</title>
+</head>
+<body>
+    <h1>Usmp Programaci&oacute;n 2</h1>
+    <a th:href="@{/card/register}">Agregar tarjeta</a><hr><hr>
+    <span th:text="${message}" /><br><br>
+    <span th:if="${messageAdvice != null}" th:text="${messageAdvice}" /><br><br>
+    <span th:if="${messageSuccess != null}" th:text="${messageSuccess}" /><br><br>
+    <div th:each="card : ${cards}" style="border: 2px solid; border-radius: 5px;">
+        <span th:text="${card.cardName}" /><br><br>
+        <span th:text="${card.cardNumber}" /><br><br>
+        <a th:href="@{/card/remove/{cardNumber} ( cardNumber = ${card.cardNumber} )}" role="button" onclick="return confirm('Esta seguro?')" title="Eliminar tarjeta">Eliminar tarjeta</a>
+    </div>
+</body>
+</html>
