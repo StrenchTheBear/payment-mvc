@@ -7,7 +7,7 @@
 <body>
     <h1>Usmp Programaci&oacute;n 2</h1>
 
-    <span th:if="${messageSuccess != null}" th:text="${messageSuccess}"></span>
+    <span style="color: red" th:if="${messageSuccess != null}" th:text="${messageSuccess}"></span>
 
     <span th:if="${session.customer != null}" th:text="'Bienvenido ' + ${session.customer.name}"></span>&nbsp;
 
@@ -16,6 +16,8 @@
     <a th:href="@{/client/register}">Registrarse</a>&nbsp;
 
     <a th:if="${session.customer != null}" th:href="@{/card/{id} (id=${session.customer.id})}">Mis m&eacute;todos de pago</a>
+
+    <a th:if="${session.customer != null}" th:href="@{/payment/register}">Realizar pago</a>
 
     <a sec:authorize="isAuthenticated()" th:href="@{/logout}">Cerrar sesi&oacute;n</a>
 </body>

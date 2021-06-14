@@ -1,6 +1,5 @@
 package com.usmp.util;
 
-import com.fasterxml.jackson.databind.DeserializationConfig;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
@@ -33,6 +32,15 @@ public class JsonHelper {
         dateFormat.setTimeZone(timeZone);
         INSTANCE.objectMapper.setDateFormat(dateFormat);
         return INSTANCE;
+    }
+
+    public <T> T fromString(final String src, final Class<T> toValueType) {
+        Map map = this.gson.fromJson(src, Map.class);
+        return this.fromMap(map, toValueType);
+    }
+
+    public Map fromString(final String src) {
+        return this.gson.fromJson(src, Map.class);
     }
 
     public <T> T fromMap(final Map src, final Class<T> toValueType) {
