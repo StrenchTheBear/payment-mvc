@@ -8,7 +8,7 @@
     <h1>Usmp Programaci&oacute;n 2</h1>
     <h4>Registro de tarjeta</h4>
     <br>
-    <span th:if="${messageAdvice != null}" th:text="${messageAdvice}" />
+    <span style="color: red" th:if="${messageAdvice != null}" th:text="${messageAdvice}" />
     <form th:action="@{/card/register}" method="post" th:object="${registerCard}">
         <label for="cardName">Nombre de tarjeta:</label>
         <input id="cardName" type="text" th:field="*{cardName}" placeholder="Nombre de tarjeta" required>

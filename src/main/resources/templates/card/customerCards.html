@@ -9,11 +9,11 @@
     <br>
     <a th:href="@{/card/register}">Agregar tarjeta</a>
     <br>
-    <span th:text="${message}" />
+    <span style="color: red" th:text="${message}" />
     <br>
-    <span th:if="${messageAdvice != null}" th:text="${messageAdvice}" />
+    <span style="color: red" th:if="${messageAdvice != null}" th:text="${messageAdvice}" />
     <br>
-    <span th:if="${messageSuccess != null}" th:text="${messageSuccess}" />
+    <span style="color: red" th:if="${messageSuccess != null}" th:text="${messageSuccess}" />
     <br>
     <div th:each="card : ${cards}" style="border: 2px solid; border-radius: 5px;">
         <span th:text="${card.cardName}" /><br><br>

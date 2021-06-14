@@ -25,8 +25,8 @@ public class CardController {
     @GetMapping("/{customerId}")
     public String getCustomerCards(@PathVariable Integer customerId, Model model) {
         Map<String, Object> response = this.cardService.getCustomerCards(customerId);
-        if(Objects.isNull(response.get("cards"))) {
-            model.addAttribute("message", "Aún no tiene ninguna tarjeta registrada");
+        if(Objects.isNull(response)) {
+            model.addAttribute("message", "Aún no tiene ninguna tarjeta registrada en el sistema");
             return "card/customerCards";
         }
         ListCardsResponse customerCards = JsonHelper.getInstance().fromMap((Map) response.get("cards"), ListCardsResponse.class);

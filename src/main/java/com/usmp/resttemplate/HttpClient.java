@@ -1,9 +1,12 @@
 package com.usmp.resttemplate;
 
 import com.usmp.dto.Customer;
+import com.usmp.dto.Payment;
 import com.usmp.dto.RegisterCard;
+import com.usmp.util.JsonHelper;
 import org.springframework.http.*;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.HttpStatusCodeException;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
@@ -19,6 +22,7 @@ public class HttpClient {
     private static final String GET_CUSTOMER_CARDS_ENDPOINT = "https://usmppayment-api.herokuapp.com/payment-business/customers/cards/";
     private static final String DELETE_CUSTOMER_CARD_ENDPOINT = "https://usmppayment-api.herokuapp.com/payment-business/cards/";
     private static final String INSERT_CUSTOMER_CARD = "https://usmppayment-api.herokuapp.com/payment-business/cards/register";
+    private static final String PAYMENT_ENDPOINT = "https://usmppayment-api.herokuapp.com/payment-business/transaction";
 
     public HttpClient() {
         this.restTemplate = new RestTemplate();
@@ -39,14 +43,8 @@ public class HttpClient {
     }
 
     public Map<String, Object> executeGetCustomerCards(Integer customerId) {
-        Map<String, Object> response = null;
         String uri = GET_CUSTOMER_CARDS_ENDPOINT.concat(customerId.toString());
-        try {
-            response = this.restTemplate.getForObject(uri, Map.class);
-        } catch (RestClientException ex) {
-            System.out.println("Ocurrió un problema al consumir el servicio: " + ex.getMostSpecificCause().getMessage());
-        }
-        return response;
+        return this.restTemplate.getForObject(uri, Map.class);
     }
 
     public ResponseEntity<Map> executeDeleteCustomerCard(String cardNumber) {
@@ -68,6 +66,18 @@ public class HttpClient {
             response = this.restTemplate.postForObject(INSERT_CUSTOMER_CARD, entity, Map.class);
         } catch (RestClientException ex) {
             System.out.println("Ocurrió un problema al consumir el servicio: " + ex.getMostSpecificCause().getMessage());
+        }
+        return response;
+    }
+
+    public Map<String, Object> executePaymentService(Payment payment) {
+        Map<String, Object> response = null;
+        HttpEntity<Payment> entity = new HttpEntity<>(payment, createHttpHeaders());
+        try {
+            response = this.restTemplate.postForObject(PAYMENT_ENDPOINT, entity, Map.class);
+        } catch (HttpStatusCodeException ex) {
+            System.out.println("Error: " + ex.getResponseBodyAsString());
+            response = JsonHelper.getInstance().fromString(ex.getResponseBodyAsString());
         }
         return response;
     }
