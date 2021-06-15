@@ -9,24 +9,40 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <span style="color: red" th:if="${errors != null}" th:text="${errors}"></span>
+    <span style="color: black" th:if="${errors != null}" th:text="${errors}"></span>
     <div class="jumbotron text-center">
         <h1>Payment - USMP</h1>        
     </div>
-    <form th:action="@{/client/register}" method="post" th:object="${customer}">
-        <label for="name">Nombre:</label>
-        <input id="name" type="text" th:field="*{name}" placeholder="Nombre cliente">
-        <label for="firstLastName">Apellido paterno:</label>
-        <input  id="firstLastName" type="text" th:field="*{firstLastName}" placeholder="Apellido paterno">
-        <label for="secondLastName">Apellido materno:</label>
-        <input id="secondLastName" type="text" th:field="*{secondLastName}" placeholder="Apellido materno">
-        <label for="dni">DNI:</label>
-        <input id="dni" type="text" th:field="*{dni}" placeholder="Documento de identidad">
-        <label for="email">Correo:</label>
-        <input id="email" type="email" th:field="*{email}" placeholder="Correo electrónico">
-        <label for="password">Contraseña:</label>
-        <input id="password" type="password" th:field="*{password}" placeholder="Correo electrónico">
-        <button type="submit">Registrar</button>
-    </form>
+    <div class="container">
+        <form th:action="@{/client/register}" method="post" th:object="${customer}">
+        <div class="well">
+            <div class="form-group">
+                <label for="name">Nombre:</label>
+                <input class="form-control" id="name" type="text" th:field="*{name}" placeholder="Nombre cliente">
+            </div>
+            <div class="form-group">
+                <label for="firstLastName">Apellido paterno:</label>
+                <input class="form-control"  id="firstLastName" type="text" th:field="*{firstLastName}" placeholder="Apellido paterno">
+            </div>
+            <div class="form-group">
+                <label for="secondLastName">Apellido materno:</label>
+                <input class="form-control" id="secondLastName" type="text" th:field="*{secondLastName}" placeholder="Apellido materno">
+            </div>
+            <div class="form-group">
+                <label for="dni">DNI:</label>
+                <input class="form-control" id="dni" type="text" th:field="*{dni}" placeholder="Documento de identidad">
+            </div>
+                <div class="form-group">
+                <label for="email">Correo:</label>
+            <input class="form-control" id="email" type="email" th:field="*{email}" placeholder="Correo electrónico">
+            </div>
+                <div class="form-group">
+                <label for="password">Contraseña:</label>
+            <input class="form-control" id="password" type="password" th:field="*{password}" placeholder="Correo electrónico">
+            </div>
+            <button class="btn btn-success" type="submit">Registrar</button>
+        </div>
+        </form>
+    </div>
 </body>
 </html>
