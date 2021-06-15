@@ -3,38 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <title>Payment Business</title>
-    <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-     <div class="d-flex">
-        <div id="sidebar-container" class="bg-primary">
-            <div class="logo">
-                <h4 class="text-light font-weight-bold"> Payment Usmp</h4>
-            </div>
 
-            <div class="menu">
+    <div class="jumbotron text-center">
+        <h1>Payment - USMP</h1>        
+    </div>
+
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <ul class="nav navbar-nav"> 
 
                 <span style="color: red" th:if="${messageSuccess != null}" th:text="${messageSuccess}"></span>
 
                 <span th:if="${session.customer != null}" th:text="'Bienvenido ' + ${session.customer.name}"></span>&nbsp;
 
-                <a th:href="@{/index}"><i class="icon ion-md-contacts"></i>Iniciar sesi&oacute;n</a>&nbsp;
+                <li><a th:href="@{/index}">Iniciar sesi&oacute;n</a>&nbsp;</li>
 
-                <a th:href="@{/client/register}"><i class="icon ion-md-finger"></i>Registrarse</a>&nbsp;
+                <li><a th:href="@{/client/register}">Registrarse</a>&nbsp;</li>
 
-                <a th:if="${session.customer != null}" th:href="@{/card/{id} (id=${session.customer.id})}"><i class="icon ion-md-card"></i>Mis m&eacute;todos de pago</a>
+                <li><a th:if="${session.customer != null}" th:href="@{/card/{id} (id=${session.customer.id})}">Mis m&eacute;todos de pago</a></li>
 
-                <a th:if="${session.customer != null}" th:href="@{/payment/register}"><i class="icon ion-md-cash"></i>Realizar pago</a>
+                <li><a th:if="${session.customer != null}" th:href="@{/payment/register}">Realizar pago</a></li>
 
-                <a sec:authorize="isAuthenticated()" th:href="@{/logout}"><i class="icon ion-md-close"></i>Cerrar sesi&oacute;n</a>
-            </div>
-
+                <li><a sec:authorize="isAuthenticated()" th:href="@{/logout}">Cerrar sesi&oacute;n</a></li>
+            </ul>
         </div>
-
-    </div>
+    </nav>
 </body>
 </html>
