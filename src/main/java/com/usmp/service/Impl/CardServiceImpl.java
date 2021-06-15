@@ -1,5 +1,6 @@
 package com.usmp.service.Impl;
 
+import com.usmp.dto.RegisterCard;
 import com.usmp.resttemplate.HttpClient;
 import com.usmp.service.CardService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,11 @@ public class CardServiceImpl implements CardService {
     @Override
     public ResponseEntity<Map> deleteCustomerCard(String cardNumber) {
         return this.httpClient.executeDeleteCustomerCard(cardNumber);
+    }
+
+    @Override
+    public Map<String, Object> insertCustomerCard(RegisterCard registerCard) {
+        return this.httpClient.executeInsertCustomerCard(registerCard);
     }
 
     @Autowired
