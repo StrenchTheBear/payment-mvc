@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Payment Business - Transacci&oacute;n</title>
+</head>
+<body>
+    <h1>Usmp Programaci&oacute;n 2</h1>
+    <span style="color: red" th:if="${messageAdvice != null}" th:text="${messageAdvice}" />
+    <form th:action="@{/payment/do}" th:object="${payment}" method="post">
+        <label for="cardName">Nombre de tarjeta:</label>
+        <input id="cardName" type="text" th:field="*{cardName}" placeholder="Nombre de tarjeta" required>
+        <br>
+        <label for="cardNumber">N&uacute;mero de tarjeta:</label>
+        <input id="cardNumber" type="text" th:field="*{cardNumber}" placeholder="Número de tarjeta" required>
+        <br>
+        <label for="expirationDate">Fecha de expiraci&oacute;n:</label>
+        <input id="expirationDate" type="text" th:field="*{expirationDate}" placeholder="Fecha de expiración" required>
+        <br>
+        <label for="cvcCode">C&oacute;digo CVC:</label>
+        <input id="cvcCode" type="text" th:field="*{cvcCode}" placeholder="Código cvc" required>
+        <br>
+        <label for="documentNumber">N&uacute;mero de documento:</label>
+        <input id="documentNumber" type="text" th:field="*{documentNumber}" placeholder="Número de documento" required>
+        <br>
+        <label for="amount">Monto:</label>
+        <input id="amount" type="text" th:field="*{amount}" placeholder="Monto S/" required>
+        <input type="hidden" th:name="customerId" th:value="${session.customer.id}"><br>
+        <button type="submit">Pagar</button>
+    </form>
+</body>
+</html>

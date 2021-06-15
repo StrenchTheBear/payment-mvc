@@ -2,17 +2,28 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Payment business</title>
+    <title>Payment Business</title>
+    <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
     <h1>Usmp Programaci&oacute;n 2</h1>
 
-    <span th:if="${messageSuccess != null}" th:text="${messageSuccess}"></span>
+    <span style="color: red" th:if="${messageSuccess != null}" th:text="${messageSuccess}"></span>
 
-    <a th:href="@{/index}">Ingresar</a>
+    <span th:if="${session.customer != null}" th:text="'Bienvenido ' + ${session.customer.name}"></span>&nbsp;
 
-    <a th:href="@{/client/register}">Registrar cliente</a>
+    <a th:href="@{/index}">Iniciar sesi&oacute;n</a>&nbsp;
 
-    <a th:href="@{/logout}">Cerrar sesi&oacute;n</a>
+    <a th:href="@{/client/register}">Registrarse</a>&nbsp;
+
+    <a th:if="${session.customer != null}" th:href="@{/card/{id} (id=${session.customer.id})}">Mis m&eacute;todos de pago</a>
+
+    <a th:if="${session.customer != null}" th:href="@{/payment/register}">Realizar pago</a>
+
+    <a sec:authorize="isAuthenticated()" th:href="@{/logout}">Cerrar sesi&oacute;n</a>
 </body>
 </html>
