@@ -5,7 +5,9 @@
     <title>Payment Business - Transacci&oacute;n</title>
 </head>
 <body>
-    <h1>Usmp Programaci&oacute;n 2</h1>
+    <div class="jumbotron text-center">
+        <h1>Usmp Programaci&oacute;n 2 Payment</h1>        
+    </div>
     <span style="color: red" th:if="${messageAdvice != null}" th:text="${messageAdvice}" />
     <form th:action="@{/payment/do}" th:object="${payment}" method="post">
         <label for="cardName">Nombre de tarjeta:</label>
