@@ -10,20 +10,31 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <h1>Usmp Programaci&oacute;n 2</h1>
+     <div class="d-flex">
+        <div id="sidebar-container" class="bg-primary">
+            <div class="logo">
+                <h4 class="text-light font-weight-bold"> Payment Usmp</h4>
+            </div>
 
-    <span style="color: red" th:if="${messageSuccess != null}" th:text="${messageSuccess}"></span>
+            <div class="menu">
 
-    <span th:if="${session.customer != null}" th:text="'Bienvenido ' + ${session.customer.name}"></span>&nbsp;
+                <span style="color: red" th:if="${messageSuccess != null}" th:text="${messageSuccess}"></span>
 
-    <a th:href="@{/index}">Iniciar sesi&oacute;n</a>&nbsp;
+                <span th:if="${session.customer != null}" th:text="'Bienvenido ' + ${session.customer.name}"></span>&nbsp;
 
-    <a th:href="@{/client/register}">Registrarse</a>&nbsp;
+                <a th:href="@{/index}"><i class="icon ion-md-contacts"></i>Iniciar sesi&oacute;n</a>&nbsp;
 
-    <a th:if="${session.customer != null}" th:href="@{/card/{id} (id=${session.customer.id})}">Mis m&eacute;todos de pago</a>
+                <a th:href="@{/client/register}"><i class="icon ion-md-finger"></i>Registrarse</a>&nbsp;
 
-    <a th:if="${session.customer != null}" th:href="@{/payment/register}">Realizar pago</a>
+                <a th:if="${session.customer != null}" th:href="@{/card/{id} (id=${session.customer.id})}"><i class="icon ion-md-card"></i>Mis m&eacute;todos de pago</a>
 
-    <a sec:authorize="isAuthenticated()" th:href="@{/logout}">Cerrar sesi&oacute;n</a>
+                <a th:if="${session.customer != null}" th:href="@{/payment/register}"><i class="icon ion-md-cash"></i>Realizar pago</a>
+
+                <a sec:authorize="isAuthenticated()" th:href="@{/logout}"><i class="icon ion-md-close"></i>Cerrar sesi&oacute;n</a>
+            </div>
+
+        </div>
+
+    </div>
 </body>
 </html>
