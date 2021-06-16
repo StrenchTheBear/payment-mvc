@@ -2,23 +2,36 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Payment business</title>
+    <title>Payment Business</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <h1>Usmp Programaci&oacute;n 2</h1>
 
-    <span style="color: red" th:if="${messageSuccess != null}" th:text="${messageSuccess}"></span>
+    <div class="jumbotron text-center">
+        <h1>Payment - USMP</h1>        
+    </div>
 
-    <span th:if="${session.customer != null}" th:text="'Bienvenido ' + ${session.customer.name}"></span>&nbsp;
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <ul class="nav navbar-nav"> 
 
-    <a th:href="@{/index}">Iniciar sesi&oacute;n</a>&nbsp;
+                <span style="color: red" th:if="${messageSuccess != null}" th:text="${messageSuccess}"></span>
 
-    <a th:href="@{/client/register}">Registrarse</a>&nbsp;
+                <span th:if="${session.customer != null}" th:text="'Bienvenido ' + ${session.customer.name}"></span>&nbsp;
 
-    <a th:if="${session.customer != null}" th:href="@{/card/{id} (id=${session.customer.id})}">Mis m&eacute;todos de pago</a>
+                <li><a th:href="@{/index}">Iniciar sesi&oacute;n</a>&nbsp;</li>
 
-    <a th:if="${session.customer != null}" th:href="@{/payment/register}">Realizar pago</a>
+                <li><a th:href="@{/client/register}">Registrarse</a>&nbsp;</li>
 
-    <a sec:authorize="isAuthenticated()" th:href="@{/logout}">Cerrar sesi&oacute;n</a>
+                <li><a th:if="${session.customer != null}" th:href="@{/card/{id} (id=${session.customer.id})}">Mis m&eacute;todos de pago</a></li>
+
+                <li><a th:if="${session.customer != null}" th:href="@{/payment/register}">Realizar pago</a></li>
+
+                <li><a sec:authorize="isAuthenticated()" th:href="@{/logout}">Cerrar sesi&oacute;n</a></li>
+            </ul>
+        </div>
+    </nav>
 </body>
-</html>
