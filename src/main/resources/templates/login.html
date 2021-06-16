@@ -3,30 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Payment Business - Sign in</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <div class="jumbotron text-center">
-        <h1>Payment - USMP</h1>        
-    </div>
+    <h1>Usmp Programaci&oacute;n 2</h1>
     <hr>
-    <div class="container">
     <form th:action="@{/login}" method="post">
-    <div class="well">
-        <div class="form-group">
         Usuario:<hr>
         <input type="text" name="username"><hr>
-        </div>
-        <div class="form-group">
         Password:<hr>
         <input type="password" name="password"><hr>
-        <input class="btn btn-success" name="submit" type="submit" value="Iniciar sesión">
-        </div>
-    </div>    
+        <input name="submit" type="submit" value="Iniciar sesión">
     </form>
-    </div>
 </body>
 </html>
