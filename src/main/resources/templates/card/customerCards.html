@@ -1,25 +1,53 @@
   
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Payment Business - M&eacute;todos de pago</title>
-</head>
-<body>
-    <h1>Usmp Programaci&oacute;n 2</h1>
-    <br>
-    <a th:href="@{/card/register}">Agregar tarjeta</a>
-    <br>
-    <span style="color: red" th:text="${message}" />
-    <br>
-    <span style="color: red" th:if="${messageAdvice != null}" th:text="${messageAdvice}" />
-    <br>
-    <span style="color: red" th:if="${messageSuccess != null}" th:text="${messageSuccess}" />
-    <br>
-    <div th:each="card : ${cards}" style="border: 2px solid; border-radius: 5px;">
-        <span th:text="${card.cardName}" /><br><br>
-        <span th:text="${card.cardNumber}" /><br><br>
-        <a th:href="@{/card/remove/{cardNumber} ( cardNumber = ${card.cardNumber} )}" role="button" onclick="return confirm('Esta seguro?')" title="Eliminar tarjeta">Eliminar tarjeta</a>
-    </div>
-</body>
+    <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>    
+        <meta charset="UTF-8">
+        <title>Payment Business - M&eacute;todos de pago</title>
+    </head>
+    <body>
+         <div class="text-center">
+            <h1>Programaci&oacute;n 2 <span class="text-muted ">USMP</span> </h1>
+        </div>
+<!--    <a th:href="@{/card/register}">Agregar tarjeta</a>
+        <br>
+        <span style="color: red" th:text="${message}" />
+        <br>
+        <span style="color: red" th:if="${messageAdvice != null}" th:text="${messageAdvice}" />
+        <br>
+        <span style="color: red" th:if="${messageSuccess != null}" th:text="${messageSuccess}" />
+        <br>
+        <div th:each="card : ${cards}" style="border: 2px solid; border-radius: 5px;">
+            <span th:text="${card.cardName}" /><br><br>
+            <span th:text="${card.cardNumber}" /><br><br>
+            <a th:href="@{/card/remove/{cardNumber} ( cardNumber = ${card.cardNumber} )}" role="button" onclick="return confirm('Esta seguro?')" title="Eliminar tarjeta">Eliminar tarjeta</a>
+        </div>
+-->
+    <div class="container">
+        <div class="btn-group">
+        <a th:href="@{/card/register}" class="btn btn-info btn-sm btn-lg active" role="button" aria-pressed="true">Agregar tarjeta</a>
+        <br>
+        </div>
+            <span style="color: dark" th:if="${messageAdvice != null}" th:text="${messageAdvice}" />
+            <br>
+            <span style="color: dark" th:if="${messageSuccess != null}" th:text="${messageSuccess}" />
+
+        <div class="card">
+            <div class="card-header">
+            <span style="color: red" th:text="${message}" />
+            </div>
+
+            <div th:each="card : ${cards}" style="border: 2px solid; border-radius: 5px;">
+                <span th:text="${card.cardName}" /><br><br>
+                <span th:text="${card.cardNumber}" /><br><br>
+                <a th:href="@{/card/remove/{cardNumber} ( cardNumber = ${card.cardNumber} )}" role="button" onclick="return confirm('Esta seguro?')" title="Eliminar tarjeta" class="btn btn-primary">Eliminar tarjeta</a>
+            </div>
+
+        </div>
+    </div>   
+    </body>
 </html>

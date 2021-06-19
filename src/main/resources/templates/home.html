@@ -2,17 +2,23 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> 
     <meta charset="UTF-8">
     <title>Payment business</title>
 </head>
 <body>
-    <h1>Usmp Programaci&oacute;n 2</h1>
+        <div class="text-center">
+            <h1>Programaci&oacute;n 2 <span class="text-muted ">USMP</span> </h1>
+        </div>
+    
+    <span style="color: red" th:if="${messageSuccess != null}" th:text="${messageSuccess}" ></span>
 
-    <span style="color: red" th:if="${messageSuccess != null}" th:text="${messageSuccess}"></span>
-
-    <span th:if="${session.customer != null}" th:text="'Bienvenido ' + ${session.customer.name}"></span>&nbsp;
-
-    <a th:href="@{/index}">Iniciar sesi&oacute;n</a>&nbsp;
+    <span th:if="${session.customer != null}" th:text="'Bienvenido ' + ${session.customer.name}" class="badge badge-dark"></span>&nbsp;
+     <hr>
+   <!-- <a th:href="@{/index}">Iniciar sesi&oacute;n</a>&nbsp;
 
     <a th:href="@{/client/register}">Registrarse</a>&nbsp;
 
@@ -20,6 +26,15 @@
 
     <a th:if="${session.customer != null}" th:href="@{/payment/register}">Realizar pago</a>
 
-    <a sec:authorize="isAuthenticated()" th:href="@{/logout}">Cerrar sesi&oacute;n</a>
+    <a sec:authorize="isAuthenticated()" th:href="@{/logout}">Cerrar sesi&oacute;n</a>-->
+
+<div class="btn-group">
+<a th:href="@{/index}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Iniciar sesi&oacute;n</a>
+<a th:href="@{/client/register}" class="btn btn-info btn-lg active" role="button" aria-pressed="true">Registrarse</a>
+<a th:if="${session.customer != null}" th:href="@{/card/{id} (id=${session.customer.id})}" class="btn btn-success btn-lg active" role="button" aria-pressed="true">Mis m&eacute;todos de pago</a>
+<a th:if="${session.customer != null}" th:href="@{/payment/register}"class="btn btn-light btn-lg active" role="button" aria-pressed="true">Realizar pago</a>
+<a sec:authorize="isAuthenticated()" th:href="@{/logout}" class="btn btn-dark btn-lg active" role="button" aria-pressed="true">Cerrar sesi&oacute;n</a>
+</div>
+
 </body>
 </html>
