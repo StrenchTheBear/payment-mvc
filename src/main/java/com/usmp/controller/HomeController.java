@@ -39,6 +39,20 @@ public class HomeController {
         return "login";
     }
 
+    @GetMapping("/dash")
+    public String showdash() {
+        return "dash";
+    }
+
+    @GetMapping("/dash1")
+    public String showdash1() {
+        return "dash1";
+    }
+    @GetMapping("/dash2")
+    public String showdash2() {
+        return "dash2";
+    }
+
     @GetMapping("/logout")
     public String logout(HttpServletRequest request) {
         SecurityContextLogoutHandler logoutHandler = new SecurityContextLogoutHandler();

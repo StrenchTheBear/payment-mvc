@@ -9,8 +9,10 @@
     <title>Payment business</title>
 </head>
 <body>
-        <div class="text-center">
-            <h1>Programaci&oacute;n 2 <span class="text-muted ">USMP</span> </h1>
+    <body background="https://fondosmil.com/fondo/10892.jpg" class="img-fluid">         
+
+        <div class="jumbotron">
+            <h1>PAYMENT<span class="text-muted "> - USMP</span> </h1>
         </div>
     
     <span style="color: red" th:if="${messageSuccess != null}" th:text="${messageSuccess}" ></span>
@@ -27,13 +29,15 @@
 
     <a sec:authorize="isAuthenticated()" th:href="@{/logout}">Cerrar sesi&oacute;n</a>-->
 
-<div class="btn-group">
-<a th:href="@{/index}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Iniciar sesi&oacute;n</a>
-<a th:href="@{/client/register}" class="btn btn-info btn-lg active" role="button" aria-pressed="true">Registrarse</a>
-<a th:if="${session.customer != null}" th:href="@{/card/{id} (id=${session.customer.id})}" class="btn btn-success btn-lg active" role="button" aria-pressed="true">Mis m&eacute;todos de pago</a>
-<a th:if="${session.customer != null}" th:href="@{/payment/register}"class="btn btn-light btn-lg active" role="button" aria-pressed="true">Realizar pago</a>
-<a sec:authorize="isAuthenticated()" th:href="@{/logout}" class="btn btn-dark btn-lg active" role="button" aria-pressed="true">Cerrar sesi&oacute;n</a>
+<div class="container">
+            <a th:href="@{/index}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Iniciar sesi&oacute;n</a>
+            <a th:href="@{/client/register}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Registrarse</a>
+            <a th:href="@{/dash}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Dashboard</a>
+            <a th:if="${session.customer != null}" th:href="@{/card/{id} (id=${session.customer.id})}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Mis m&eacute;todos de pago</a>
+            <a th:if="${session.customer != null}" th:href="@{/payment/register}"class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Realizar pago</a>
+            <a sec:authorize="isAuthenticated()" th:href="@{/logout}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Cerrar sesi&oacute;n</a>
 </div>
+
 
 </body>
 </html>

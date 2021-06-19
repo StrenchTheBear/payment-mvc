@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> 
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <script type="text/javascript">
+              google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+        function drawChart() {
+      var data = google.visualization.arrayToDataTable([
+        ['Year', 'Visitations', { role: 'style' } ],
+        ['2021', 6, 'color: gray'],
+        
+      ]);
+      var view = new google.visualization.DataView(data);
+      view.setColumns([0, 1,
+                       { calc: "stringify",
+                         sourceColumn: 1,
+                         type: "string",
+                         role: "annotation" },
+                       2]);
+
+      var options = {
+        title: "USUARIOS",
+        width: 600,
+        height: 400,
+        bar: {groupWidth: "95%"},
+        legend: { position: "none" },
+      };
+      var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
+      chart.draw(view, options);
+        }
+    </script>    
+
+    <meta charset="UTF-8">
+    <title>Payment business</title>
+</head>
+<body>
+        <div class="jumbotron">
+            <h1>PAYMENT<span class="text-muted "> - USMP</span> </h1>
+        </div>
+    <hr>
+    
+    <span style="color: red" th:if="${messageSuccess != null}" th:text="${messageSuccess}" ></span>
+
+    <span th:if="${session.customer != null}" th:text="'Bienvenido ' + ${session.customer.name}" class="badge badge-dark"></span>&nbsp;
+     <hr>
+  
+
+<div class="container">
+            <a th:href="@{/dash1}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">CLIENTES</a>
+            <a th:href="@{/dash2}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">TARJETAS</a>            
+</div>
+
+
+<div id="columnchart_values" style="width: 900px; height: 300px;"></div>
+</body>
+</html>
